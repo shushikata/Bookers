@@ -1,0 +1,15 @@
+<h2>New Book</h2>
+
+
+<% @books.each do |book| %>
+  
+<% end %>
+
+
+<%= form_for(@book) do |f| %> 
+  <label for="booktitle">Title</label><br>
+  <%= f.text_field :title %><br>
+  <label for="bookbody">Opinion</label><br>
+  <%= f.text_area :body %><br>
+  <%= f.submit 'Create Book' %>
+<% end %>
