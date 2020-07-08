@@ -1,0 +1,19 @@
+<p id="notice">
+ <%= notice %> 
+</p>
+
+<h2>Book detail</h2>
+
+<p>
+<span class="bold">Title: </span>
+<%= @book.title %>
+</p>
+
+<p>
+<span class="bold">Body: </span>
+<%= @book.body %>
+</p> 
+
+<%= link_to "Edit", edit_book_path %> 
+<%= "|" %>
+<%= link_to "Destroy", destroy_book_path %>
