@@ -2,6 +2,9 @@ class BooksController < ApplicationController
   def top 
   end
 
+  def about
+  end
+
   def index #books　投稿一覧
     @books = Book.all
     @book = Book.new

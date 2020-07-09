@@ -15,22 +15,44 @@
         <nav class="navbar-left">
           <span>Bookers</span>
         </nav>
-        <nav>
-          <ul class="navbar-right">
-            <li class="home">
-              <%= link_to 'Home', user_path(current_user.id) %>
-            </li>
-            <li class="users">
-              <%= link_to 'Users', users_path %>
-            </li>
-            <li class="books">
-              <%= link_to 'Books', books_path %>
-            </li>
-            <li class="logout">
-              <%= link_to 'logout', root_path %>
-            </li>
-          </ul>
-        </nav>
+
+          <% if user_signed_in? %>
+            <nav>
+              <ul class="navbar-right">
+                <li class="logout">
+                  <%= link_to "logout", destroy_user_session_path, method: :delete %>
+                </li>
+                <li class="books">
+                  <%= link_to 'Books', books_path %>
+                </li>
+                <li class="users">
+                  <%= link_to 'Users', users_path %>
+                </li>
+                <li class="home">
+                  <%= link_to 'Home', user_path(current_user.id) %>
+                </li>
+              </ul>
+            </nav>
+          <% else %>
+            <nav>
+              <ul class="navbar-right">
+                <li class="login">
+                  <%= link_to "login", new_user_session_path %>
+                </li>
+                <li class="signup">
+                  <%= link_to 'sign up', new_user_registration_path %>
+                </li>
+                <li class="about">
+                  <%= link_to 'About', home_about_path %>
+                </li>
+                <li class="home">
+                  <%= link_to 'Home', root_path %>
+                </li>
+              </ul>
+            </nav>
+          <% end %>
+          
+        
       </div>
     </header>
 
