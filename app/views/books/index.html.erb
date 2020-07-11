@@ -2,23 +2,38 @@
  <%= notice %> 
 </p>
 
-<% if @book.errors.any? %>
-  <h3 class="error_message">error prohibited this book from being saved:</h3>
-  <br>
-    <p class="error_message">can't be blank</p>
-  </br>
+<h1>User info</h1>
+  
+  <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %> 
+
+  <p>name <%= @user.name %></p>
+  <p>introduction <%= @user.introduction %></p>
+  <p>
+    <%= link_to 'Setting', edit_user_path(current_user.id) %>
+  </p>
+
+<h1>New book</h1>
+<%= form_for(@book) do |f| %> 
+  <label for="booktitle">Title</label><br>
+  <%= f.text_field :title %><br>
+  <label for="bookbody">Opinion</label><br>
+  <%= f.text_area :body %><br>
+  <%= f.submit "Create Book" %>
 <% end %>
 
-<h2>New Book</h2>
-
+<h1>Books</h1>
 <table>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Opinion</th>
     </tr>
     <tr>
       <% @books.each do |book| %>
         <tr>
+          <td>
+            <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+          </td>
           <td>
             <%= link_to book.title, book_path(book) %>
           </td>
@@ -29,12 +44,3 @@
       <% end %>
     </tr>
 </table>
-
-
-<%= form_for(@book) do |f| %> 
-  <label for="booktitle">Title</label><br>
-  <%= f.text_field :title %><br>
-  <label for="bookbody">Opinion</label><br>
-  <%= f.text_area :body %><br>
-  <%= f.submit "Create Book" %>
-<% end %>

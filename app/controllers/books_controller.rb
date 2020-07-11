@@ -2,26 +2,26 @@ class BooksController < ApplicationController
   def top 
   end
 
-  def about
-  end
-
   def index #books　投稿一覧
     @books = Book.all
     @book = Book.new
+    @user = current_user
   end
 
   def show #book　投稿内容詳細ページ
     @book = Book.find(params[:id])
+    @user = current_user
   end
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save 
       flash[:notice] = "You have creatad book successfully."
       redirect_to book_path(@book.id)
     else  
       @books = Book.all 
-      render ("books/index")
+      render ("books/show")
     end
   end
 

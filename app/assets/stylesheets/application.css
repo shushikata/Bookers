@@ -11,10 +11,6 @@
   clear: both;
 }
 
-header {
-  
-}
-
 .container {
   background-color: rgb(138, 138, 138);
   width: 100%;
@@ -30,7 +26,6 @@ header {
 
 .navbar-right {
   list-style: none;
-  color: white;
   margin-bottom: -40px;
   margin-right: 100px;
 }
@@ -68,4 +63,12 @@ header {
 .signup {
   float: right;
   padding: 15px;
+}
+
+#notice {
+  color: lightgreen;
+}
+
+.error_message {
+  color: red;
 }

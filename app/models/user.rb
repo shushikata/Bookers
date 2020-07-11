@@ -6,4 +6,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+
+  validates :introduction, presence: true, length: {maximum: 50}
+
+  validates :name, length: { minimum:2, maximum:20 }
+  validates :name, presence: true
+
+  attachment :profile_image
+
 end
