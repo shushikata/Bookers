@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  
   def top 
   end
 
@@ -10,7 +11,8 @@ class BooksController < ApplicationController
 
   def show #book　投稿内容詳細ページ
     @book = Book.find(params[:id])
-    @user = current_user
+    @books = Book.new
+    @user = @book.user
   end
 
   def create

@@ -1,10 +1,16 @@
+<p id="notice">
+ <%= notice %> 
+</p>
+
+<div class="col-lg-3">
 <h1>User info</h1>
-  
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %> 
-  <p>name <%= current_user.name %></p>
-  <p>introduction <%= current_user.introduction %></p>
-  <% if @user.id == current_user.id %>
-      <p><%= link_to "Setting", edit_user_path(@user), class: "pull-right" %></p>
+  <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg" %> 
+  <p>name <%= @user.name %></p>
+  <p>introduction <%= @user.introduction %></p>
+  <% if @user.id === current_user.id %>
+    <%= link_to "Setting", edit_user_path(@user) %>
+  <% else %>
+    <%= link_to "Setting", user_path(current_user) %>
   <% end %>
 
 <h1>New book</h1>
@@ -15,9 +21,14 @@
     <%= f.text_area :body %><br>
     <%= f.submit "Create Book" %>
   <% end %>
+</div>
 
+<div class="container"> 
+  <div class="row">  
+  <div class="col-lg-9">
+  
 <h1>Books</h1>
- <table>
+ <table class="table table-striped">
     <tr>
       <th></th>
       <th>Title</th>
@@ -27,7 +38,8 @@
       <% @books.each do |book| %>
         <tr>
           <td>
-              <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %> 
+            <%= link_to user_path(book.user) %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
           </td>
           <td>
             <%= link_to book.title, book_path(book.id) %>
@@ -39,3 +51,7 @@
       <% end %>
     </tr>
   </table>
+</table>
+  </div>
+  </div>   
+  </div>   

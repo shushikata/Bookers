@@ -1,3 +1,5 @@
+@import "bootstrap-sprockets";  
+@import "bootstrap";      
 
 * {
   margin: 0;
@@ -5,16 +7,15 @@
   box-sizing: border-box;
 }
 
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.container {
+header {
   background-color: rgb(138, 138, 138);
   width: 100%;
   height: 50px;
+}
+
+.navbar {
+  display: inline-block;
+  float: right;
 }
 
 .navbar-left {
@@ -22,46 +23,47 @@
   padding-top: 10px;
   padding-left: 80px;
   color: white;
+  display: inline-block;
 }
 
 .navbar-right {
   list-style: none;
-  margin-bottom: -40px;
-  margin-right: 100px;
+  float: right;
+  display: inline-block;
 }
 
 .home {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .users {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .books {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .logout {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .about {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .login {
-  float: right;
+  float: left;
   padding: 15px;
 }
 
 .signup {
-  float: right;
+  float: left;
   padding: 15px;
 }
 

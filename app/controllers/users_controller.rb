@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
+    flash[:notice] = 'You have updated book successfully.'
   end
 
   private 
