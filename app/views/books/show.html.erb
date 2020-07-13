@@ -1,48 +1,55 @@
-<p id="notice">
- <%= notice %> 
-</p>
+<p id="notice"><%= notice %></p>
 
-<h1>User info</h1>
-  <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg" %> 
-  <p>name <%= @user.name %></p>
-  <p>introduction <%= @user.introduction %></p>
-  <% if @user.id === current_user.id %>
-    <%= link_to "Setting", edit_user_path(@user) %>
-  <% else %>
-    <%= link_to "Setting", user_path(current_user) %>
-  <% end %>
-
-<h1>New book</h1>
-  <%= form_for(@books) do |f| %> 
-    <label for="booktitle">Title</label><br>
-    <%= f.text_field :title %><br>
-    <label for="bookbody">Opinion</label><br>
-    <%= f.text_area :body %><br>
-    <%= f.submit "Create Book" %>
-  <% end %>
-
-
-<h2>Book detail</h2>
-  <table>
-    <tr>
-      <td>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %> 
-        <%= link_to @user.name, user_path(@user.id) %>
-      </td>
-      <td>
-        <%= link_to @book.title, book_path %> 
-      </td>
-      <td>
-        <%= @book.body %>
-      </td>
-
-      <% if @user.id == current_user.id %>
-        <td>
-            <%= link_to "Edit", edit_book_path %> 
-        </td>
-        <td>
-          <%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "Are you sure?" %>
-        <td>
+<div class="container"> 
+  <div class="row">  
+    <div class="col-xs-3">
+      <h1>User info</h1>
+       <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg" %> 
+      <p>name <%= @user.name %></p>
+      <p>introduction <%= @user.introduction %></p>
+      <% if @user.id === current_user.id %>
+        <%= link_to edit_user_path(@user), class:"btn btn-default btn-block" do %>
+          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        <% end %>
+      <% else %>
+        <%= link_to "Setting", user_path(current_user) %>
       <% end %>
-    </tr>
-  </table>
+
+      <h1>New book</h1>
+      <%= form_for(@book) do |f| %> 
+        <label for="booktitle">Title</label><br>
+          <%= f.text_field :title, class:"btn-block" %><br>
+        <label for="bookbody">Opinion</label><br>
+          <%= f.text_area :body, class:"btn-block" %><br>
+          <%= f.submit "Create Book", class:"btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+ 
+    <div class="col-xs-9">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tr>
+          <td>
+            <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %> 
+            <%= link_to @user.name, user_path(@user.id) %>
+          </td>
+          <td>
+            <%= link_to @book.title, book_path %> 
+          </td>
+          <td>
+            <%= @book.body %>
+          </td>
+
+          <% if @user.id == current_user.id %>
+            <td>
+                <%= link_to "Edit", edit_book_path %> 
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "Are you sure?" %>
+            <td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
