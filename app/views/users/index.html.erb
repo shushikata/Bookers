@@ -1,42 +1,21 @@
 
 <div class="container"> 
   <div class="row">  
-    <div class="col-xs-3">
-      <h1>User info</h1>
-      <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg" %> 
-      <p>name <%= @user.name %></p>
-      <p>introduction <%= @user.introduction %></p>
-      <% if @user.id === current_user.id %>
-        <%= link_to edit_user_path(@user), class:"btn btn-default btn-block" do %>
-          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-        <% end %>
-      <% else %>
-        <%= link_to "Setting", user_path(current_user) %>
-      <% end %>
-
-      <h1>New book</h1>
-      <%= form_for(@book) do |f| %> 
-        <label for="booktitle">Title</label><br>
-          <%= f.text_field :title, class:"btn-block" %><br>
-        <label for="bookbody">Opinion</label><br>
-          <%= f.text_area :body, class:"btn-block" %><br>
-          <%= f.submit "Create Book", class:"btn btn-primary btn-block" %>
-      <% end %>
-    </div>
+    <%= render 'books/list', book: @book, user: @user %>
 
     <div class="col-xs-9">
       <h1>Users</h1>
       <table class="table">
           <tr>
-            <th></th>
             <th>image</th>
             <th>name</th>
+            <th></th>
           </tr>
           <tr>
             <% @users.each do |user| %>
               <tr>
                 <td>
-                  <%= attachment_image_tag user, :profile_image, size: "60", format: 'jpeg', fallback: "no_image.jpg" %> 
+                  <%= attachment_image_tag user, :profile_image, size: "50", format: 'jpeg', fallback: "no_image.jpg" %> 
                 </td>
                 <td>
                   <%= user.name %>
