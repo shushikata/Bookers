@@ -16,7 +16,9 @@
           <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
         <% end %>
       <% else %>
-        <%= link_to "Setting", user_path(current_user) %>
+        <%= link_to user_path(current_user), class:"btn btn-default btn-block" do %>
+          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        <% end %>
       <% end %>
 
       <h1>New book</h1>
